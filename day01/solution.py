@@ -13,25 +13,25 @@ class Day01(BaseSolution):
 
 
     def part1(self, input_data) -> int:
-        starting_dial = 50
+        dial = 50
 
         counts_0 = 0
         for turn, steps in input_data:
-            starting_dial = (starting_dial + turn * steps) % 100
-            counts_0 += (starting_dial == 0)
+            dial = (dial + turn * steps) % 100
+            counts_0 += (dial == 0)
 
         return counts_0
 
     def part2(self, input_data) -> int:
-        starting_dial = 50
+        dial = 50
 
         counts_0 = 0
         for turn, steps in input_data:
-            div, mod = divmod(turn * steps + starting_dial, 100)
+            div, mod = divmod(turn * steps + dial, 100)
 
             # Count how many times we pass through 0 during this move
-            n_counts = abs(div) - int(starting_dial == 0 and turn == -1) + int(mod == 0 and turn == -1)
-            starting_dial = mod
+            n_counts = abs(div) - (dial == 0 and turn == -1) + (mod == 0 and turn == -1)
+            dial = mod
             counts_0 += n_counts
 
         return counts_0
