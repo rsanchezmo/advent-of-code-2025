@@ -16,7 +16,8 @@ class BaseSolution(ABC):
     @property
     def input_path(self) -> Path:
         """Path to the input file for this day."""
-        return Path(__file__).parent / f"day{self.day:02d}" / "input.txt"
+        # Go up one level from aoc/ to project root, then into dayXX/
+        return Path(__file__).parent.parent / f"day{self.day:02d}" / "input.txt"
 
     @property
     def raw_input(self) -> str:
