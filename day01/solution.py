@@ -1,5 +1,5 @@
 """Advent of Code 2025 - Day 1"""
-from base_solution import BaseSolution
+from aoc.base_solution import BaseSolution
 
 
 class Day01(BaseSolution):
@@ -33,13 +33,19 @@ class Day01(BaseSolution):
 if __name__ == "__main__":
     solution = Day01()
 
-    # Test with sample input
-    # test_input = """
-    # 1
-    # 2
-    # 3
-    # """
-    # solution.test(test_input, expected1=6, expected2=None)
+    test_input = """
+    L68
+    L30
+    R48
+    L5
+    R60
+    L55
+    L1
+    L99
+    R14
+    L82
+    """
+    solution.test(test_input, expected1=3, expected2=None)
     
     # If part 2 has different sample input:
     # solution.test(test_input, expected1=6, expected2=10, test_input_part2="different\ninput")
