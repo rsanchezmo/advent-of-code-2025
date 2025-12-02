@@ -26,11 +26,15 @@ class Day02(BaseSolution):
         return total_sum
 
     def part2(self, input_data) -> int:
+        pattern = re.compile(r'(.+?)\1{1,}')
         total_sum = 0
+        
         for start, end in input_data:
             for n in range(start, end + 1):
-                s = str(n)
-                total_sum += n * bool(re.fullmatch(r'(.+?)\1{1,}', s))
+                s = str(n) 
+                if pattern.fullmatch(s):
+                    total_sum += n
+        
         return total_sum
 
 
