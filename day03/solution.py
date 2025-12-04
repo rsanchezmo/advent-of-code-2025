@@ -1,4 +1,4 @@
-"""Advent of Code 2025 - Day 2"""
+"""Advent of Code 2025 - Day 3"""
 from aoc.base_solution import BaseSolution
 
 
