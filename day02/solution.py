@@ -12,7 +12,7 @@ class Day02(BaseSolution):
         return [(int(line.split("-")[0]), int(line.split("-")[1])) for line in raw_input.strip().split(",")]
 
 
-    def part1(self, input_data) -> int:
+    def part1(self, input_data, **kwargs) -> int:
         total_sum = 0
         for start, end in input_data:
             for n in range(start, end + 1):
@@ -25,7 +25,7 @@ class Day02(BaseSolution):
                     total_sum += n
         return total_sum
 
-    def part2(self, input_data) -> int:
+    def part2(self, input_data, **kwargs) -> int:
         pattern = re.compile(r'(.+?)\1{1,}')
         total_sum = 0
         

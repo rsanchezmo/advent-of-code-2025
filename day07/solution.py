@@ -12,7 +12,7 @@ class Day07(BaseSolution):
         starting_loc = (0, data[0].index('S'))
         return starting_loc, data
 
-    def part1(self, input_data) -> int:
+    def part1(self, input_data, **kwargs) -> int:
         starting_loc, diagram = input_data
 
         queue = {starting_loc}
@@ -35,7 +35,7 @@ class Day07(BaseSolution):
 
         return len(splitters)
             
-    def part2(self, input_data) -> int:
+    def part2(self, input_data, **kwargs) -> int:
         starting_loc, diagram = input_data
         diagram_result = [[0] * len(diagram[0]) for _ in range(len(diagram))]
         diagram_result[starting_loc[0]][starting_loc[1]] = 1

@@ -29,11 +29,11 @@ class Day${DAY_PADDED}(BaseSolution):
     def parse_input(self, raw_input: str):
         return raw_input.splitlines()
 
-    def part1(self, input_data) -> int:
+    def part1(self, input_data, **kwargs) -> int:
         # TODO: implement
         return 0
 
-    def part2(self, input_data) -> int:
+    def part2(self, input_data, **kwargs) -> int:
         # TODO: implement
         return 0
 

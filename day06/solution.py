@@ -48,13 +48,13 @@ class Day06(BaseSolution):
             return prod
         return 0
 
-    def part1(self, input_data) -> int:
+    def part1(self, input_data, **kwargs) -> int:
         result = 0
         for numbers, operand in zip(*input_data):
             result += self._calc(numbers, operand)
         return result
 
-    def part2(self, input_data) -> int:
+    def part2(self, input_data, **kwargs) -> int:
         return self.part1(input_data)
 
 

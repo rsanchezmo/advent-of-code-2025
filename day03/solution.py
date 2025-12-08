@@ -10,7 +10,7 @@ class Day03(BaseSolution):
         return raw_input.splitlines()
 
 
-    def part1(self, input_data) -> int:
+    def part1(self, input_data, **kwargs) -> int:
         
         total_joltage = 0
         for bank in input_data:
@@ -31,7 +31,7 @@ class Day03(BaseSolution):
             return max_value
         return max_value + self.find_sequence(bank, max_index + 1, end + 1)
 
-    def part2(self, input_data) -> int:
+    def part2(self, input_data, **kwargs) -> int:
         total_joltage = 0
         for bank in input_data:
             joltage = sum(int(digit) * 10 ** (11 - idx) for idx, digit in enumerate(self.find_sequence(bank, 0, len(bank) - 11)))

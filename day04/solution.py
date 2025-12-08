@@ -17,7 +17,7 @@ class Day04(BaseSolution):
             if ch == "@"
         }
 
-    def part1(self, input_data) -> int:
+    def part1(self, input_data, **kwargs) -> int:
         return len(Day04._find_accessible_rolls(input_data))
     
     @staticmethod
@@ -29,7 +29,7 @@ class Day04(BaseSolution):
     def _find_accessible_rolls(basemap):
         return {pos for pos in basemap if Day04._find_removable_rolls(pos, basemap) < 4}
 
-    def part2(self, input_data) -> int:
+    def part2(self, input_data, **kwargs) -> int:
         basemap = input_data.copy()
 
         accessible_rolls = 0

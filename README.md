@@ -31,10 +31,10 @@ All solutions extend the `BaseSolution` class from `aoc/base_solution.py`, which
 | `parse_input(raw_input)` | Parse raw input into a usable format (default: split by lines) |
 | `parse_input_part1(raw_input)` | Custom parsing for part 1 (if different from part 2) |
 | `parse_input_part2(raw_input)` | Custom parsing for part 2 (if different from part 1) |
-| `part1(input_data)` | **Abstract** - Implement your part 1 solution |
-| `part2(input_data)` | **Abstract** - Implement your part 2 solution |
-| `solve()` | Run both parts with timing information |
-| `test(test_input, expected1, expected2, test_input_part2)` | Test with sample input before solving |
+| `part1(input_data, **kwargs)` | **Abstract** - Implement your part 1 solution |
+| `part2(input_data, **kwargs)` | **Abstract** - Implement your part 2 solution |
+| `solve(part1_kwargs, part2_kwargs)` | Run both parts with timing information |
+| `test(test_input, expected1, expected2, test_input_part2, part1_kwargs, part2_kwargs)` | Test with sample input before solving |
 
 ### Usage Example
 
@@ -48,11 +48,11 @@ class Day05(BaseSolution):
     def parse_input(self, raw_input: str):
         return raw_input.splitlines()
 
-    def part1(self, input_data) -> int:
+    def part1(self, input_data, **kwargs) -> int:
         # Your solution here
         return 0
 
-    def part2(self, input_data) -> int:
+    def part2(self, input_data, **kwargs) -> int:
         # Your solution here
         return 0
 
@@ -65,6 +65,25 @@ if __name__ == "__main__":
     
     # Solve with real input
     solution.solve()
+```
+
+### Using kwargs for Different Parameters
+
+When test and solve require different parameters (e.g., grid size, iterations):
+
+```python
+def part1(self, input_data, grid_size=100, **kwargs) -> int:
+    # Use grid_size parameter
+    ...
+
+if __name__ == "__main__":
+    solution = Day05()
+    
+    # Test with smaller grid
+    solution.test(test_input, expected1=12, part1_kwargs={"grid_size": 10})
+    
+    # Solve with full grid
+    solution.solve(part1_kwargs={"grid_size": 100})
 ```
 
 ### Example Output
@@ -94,7 +113,7 @@ Total time: 221.42ms
 - [x] Day 5
 - [x] Day 6
 - [x] Day 7
-- [ ] Day 8
+- [x] Day 8
 - [ ] Day 9
 - [ ] Day 10
 - [ ] Day 11

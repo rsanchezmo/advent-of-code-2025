@@ -12,7 +12,7 @@ class Day01(BaseSolution):
         return [(_parse_orientation(line[0]), int(line[1:].strip())) for line in raw_input.splitlines()]
 
 
-    def part1(self, input_data) -> int:
+    def part1(self, input_data, **kwargs) -> int:
         dial = 50
 
         counts_0 = 0
@@ -22,7 +22,7 @@ class Day01(BaseSolution):
 
         return counts_0
 
-    def part2(self, input_data) -> int:
+    def part2(self, input_data, **kwargs) -> int:
         dial = 50
 
         counts_0 = 0

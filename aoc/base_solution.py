@@ -46,24 +46,36 @@ class BaseSolution(ABC):
         return self.parse_input(raw_input)
 
     @abstractmethod
-    def part1(self, input_data: Any) -> Any:
+    def part1(self, input_data: Any, **kwargs) -> Any:
         """Solve part 1 of the puzzle."""
         pass
 
     @abstractmethod
-    def part2(self, input_data: Any) -> Any:
+    def part2(self, input_data: Any, **kwargs) -> Any:
         """Solve part 2 of the puzzle."""
         pass
 
-    def solve(self, show_time: bool = True) -> tuple[Any, Any]:
-        """Run both parts of the solution."""
+    def solve(self, show_time: bool = True, 
+              part1_kwargs: dict | None = None,
+              part2_kwargs: dict | None = None) -> tuple[Any, Any]:
+        """
+        Run both parts of the solution.
+        
+        Args:
+            show_time: Whether to display timing information
+            part1_kwargs: Additional keyword arguments to pass to part1
+            part2_kwargs: Additional keyword arguments to pass to part2
+        """
+        part1_kwargs = part1_kwargs or {}
+        part2_kwargs = part2_kwargs or {}
+        
         print(f"🎄 Advent of Code {self.year} - Day {self.day}")
         print("=" * 40)
 
         # Part 1
         input_data1 = self.parse_input_part1(self.raw_input)
         start = time.perf_counter()
-        result1 = self.part1(input_data1)
+        result1 = self.part1(input_data1, **part1_kwargs)
         time1 = time.perf_counter() - start
         print(f"Part 1: {result1}")
         if show_time:
@@ -72,7 +84,7 @@ class BaseSolution(ABC):
         # Part 2
         input_data2 = self.parse_input_part2(self.raw_input)
         start = time.perf_counter()
-        result2 = self.part2(input_data2)
+        result2 = self.part2(input_data2, **part2_kwargs)
         time2 = time.perf_counter() - start
         print(f"Part 2: {result2}")
         if show_time:
@@ -85,7 +97,9 @@ class BaseSolution(ABC):
         return result1, result2
 
     def test(self, test_input: str, expected1: Any = None, expected2: Any = None, 
-             test_input_part2: str | None = None) -> bool:
+             test_input_part2: str | None = None,
+             part1_kwargs: dict | None = None,
+             part2_kwargs: dict | None = None) -> bool:
         """
         Test the solution with sample input.
         
@@ -94,7 +108,12 @@ class BaseSolution(ABC):
             expected1: Expected result for part 1
             expected2: Expected result for part 2
             test_input_part2: Optional separate input for part 2 (if different from part 1)
+            part1_kwargs: Additional keyword arguments to pass to part1
+            part2_kwargs: Additional keyword arguments to pass to part2
         """
+        part1_kwargs = part1_kwargs or {}
+        part2_kwargs = part2_kwargs or {}
+        
         print(f"🧪 Testing Day {self.day}")
         print("-" * 40)
 
@@ -102,7 +121,7 @@ class BaseSolution(ABC):
 
         if expected1 is not None:
             input_data = self.parse_input_part1(test_input.strip())
-            result1 = self.part1(input_data)
+            result1 = self.part1(input_data, **part1_kwargs)
             status = "✅" if result1 == expected1 else "❌"
             print(f"{status} Part 1: {result1} (expected: {expected1})")
             passed = passed and (result1 == expected1)
@@ -110,7 +129,7 @@ class BaseSolution(ABC):
         if expected2 is not None:
             input_for_part2 = test_input_part2 if test_input_part2 is not None else test_input
             input_data = self.parse_input_part2(input_for_part2.strip())
-            result2 = self.part2(input_data)
+            result2 = self.part2(input_data, **part2_kwargs)
             status = "✅" if result2 == expected2 else "❌"
             print(f"{status} Part 2: {result2} (expected: {expected2})")
             passed = passed and (result2 == expected2)

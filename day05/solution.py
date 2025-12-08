@@ -16,7 +16,7 @@ class Day05(BaseSolution):
         numbers = [int(line) for line in number_lines.splitlines()]
         return ranges, numbers
 
-    def part1(self, input_data) -> int:
+    def part1(self, input_data, **kwargs) -> int:
         ranges, numbers = input_data
         merged_ranges = Day05.merge_ranges(ranges)
         fresh_numbers = 0
@@ -40,7 +40,7 @@ class Day05(BaseSolution):
                 merged_ranges[-1][1] = max(merged_ranges[-1][1], end)
         return merged_ranges
 
-    def part2(self, input_data) -> int:
+    def part2(self, input_data, **kwargs) -> int:
         ranges, _ = input_data
 
         merged_ranges = Day05.merge_ranges(ranges)
