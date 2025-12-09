@@ -114,7 +114,7 @@ Total time: 221.42ms
 - [x] Day 6
 - [x] Day 7
 - [x] Day 8
-- [ ] Day 9
+- [x] Day 9
 - [ ] Day 10
 - [ ] Day 11
 - [ ] Day 12
