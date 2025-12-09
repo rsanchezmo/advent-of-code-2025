@@ -11,3 +11,4 @@ build-backend = "setuptools.build_meta"
 [tool.poetry.dependencies]
 matplotlib = "^3.10.7"
 numpy = "^2.3.5"
+shapely = "^2.1.2"
