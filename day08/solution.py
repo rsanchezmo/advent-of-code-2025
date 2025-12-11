@@ -1,4 +1,5 @@
 """Advent of Code 2025 - Day 8"""
+
 from aoc.base_solution import BaseSolution
 
 
@@ -7,15 +8,15 @@ class Day08(BaseSolution):
         super().__init__(day=8)
 
     def parse_input(self, raw_input: str):
-        return {tuple(map(int, line.split(','))) for line in raw_input.splitlines()}
+        return {tuple(map(int, line.split(","))) for line in raw_input.splitlines()}
 
     @staticmethod
     def _euclidean_distance(a, b) -> float:
         return ((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2) ** 0.5
-    
+
     @staticmethod
     def _get_sorted_distances(points):
-        distance_map = {} # point_a, pointb -> distance
+        distance_map = {}  # point_a, pointb -> distance
         for point_a in points:
             for point_b in points:
                 if point_a == point_b or (min(point_a, point_b), max(point_a, point_b)) in distance_map:
@@ -25,7 +26,6 @@ class Day08(BaseSolution):
 
         sorted_distances = sorted(distance_map.items(), key=lambda x: x[1])
         return sorted_distances
-
 
     def part1(self, input_data, iterations=10, **kwargs) -> int:
         points = input_data
@@ -47,7 +47,7 @@ class Day08(BaseSolution):
                     circuit_b = circuit
                 if circuit_a and circuit_b:
                     break
-            
+
             if circuit_a and circuit_b:
                 if circuit_a != circuit_b:
                     circuit_a.update(circuit_b)
@@ -66,7 +66,6 @@ class Day08(BaseSolution):
         first_len, second_len, third_len = len(circuits[0]), len(circuits[1]), len(circuits[2])
         return first_len * second_len * third_len
 
-
     def part2(self, input_data, **kwargs) -> int:
         points = input_data
         sorted_distances = Day08._get_sorted_distances(points)
@@ -82,7 +81,7 @@ class Day08(BaseSolution):
                     circuit_b = circuit
                 if circuit_a and circuit_b:
                     break
-            
+
             if circuit_a and circuit_b:
                 if circuit_a != circuit_b:
                     circuit_a.update(circuit_b)
@@ -98,7 +97,7 @@ class Day08(BaseSolution):
 
             if len(circuits[0]) == len(points):
                 return point_a[0] * point_b[0]
-            
+
         return 0
 
 

@@ -1,4 +1,5 @@
 """Advent of Code 2025 - Day 6"""
+
 from aoc.base_solution import BaseSolution
 
 
@@ -15,10 +16,10 @@ class Day06(BaseSolution):
         operands = [x for x in lines[-1].split() if x]
         numbers = list(zip(*numbers))
         return numbers, operands
-    
+
     def parse_input_part2(self, raw_input: str):
         lines = raw_input.strip().splitlines()
-        
+
         # find operand positions in the last line
         operand_cols = [(idx, char) for idx, char in enumerate(lines[-1]) if char in "+*"]
         operands = [op for _, op in operand_cols]
@@ -31,12 +32,12 @@ class Day06(BaseSolution):
             end_idx = operand_cols[i + 1][0] if i + 1 < len(operand_cols) else len(lines[0])
             group_nums = []
             for col in range(start_idx, end_idx):
-                col_num = ''.join(line[col] for line in lines[:-1]).strip()
+                col_num = "".join(line[col] for line in lines[:-1]).strip()
                 if col_num:
                     group_nums.append(int(col_num))
             numbers.append(group_nums)
         return numbers, operands
-    
+
     @staticmethod
     def _calc(numbers: list[int], operand: str):
         if operand == "+":

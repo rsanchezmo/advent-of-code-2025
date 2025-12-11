@@ -1,4 +1,5 @@
 """Advent of Code 2025 - Day 1"""
+
 from aoc.base_solution import BaseSolution
 
 
@@ -8,9 +9,9 @@ class Day01(BaseSolution):
 
     def parse_input(self, raw_input: str):
         def _parse_orientation(s: str):
-            return -1 if s == 'L' else 1
-        return [(_parse_orientation(line[0]), int(line[1:].strip())) for line in raw_input.splitlines()]
+            return -1 if s == "L" else 1
 
+        return [(_parse_orientation(line[0]), int(line[1:].strip())) for line in raw_input.splitlines()]
 
     def part1(self, input_data, **kwargs) -> int:
         dial = 50
@@ -18,7 +19,7 @@ class Day01(BaseSolution):
         counts_0 = 0
         for turn, steps in input_data:
             dial = (dial + turn * steps) % 100
-            counts_0 += (dial == 0)
+            counts_0 += dial == 0
 
         return counts_0
 

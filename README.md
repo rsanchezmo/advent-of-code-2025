@@ -118,3 +118,18 @@ Total time: 221.42ms
 - [x] Day 10
 - [x] Day 11
 - [ ] Day 12
+
+## Formatting
+
+This project uses [Ruff](https://docs.astral.sh/ruff/) for code formatting and linting.
+
+```bash
+# Format all files
+ruff format .
+
+# Check for linting issues
+ruff check .
+
+# Auto-fix linting issues
+ruff check --fix .
+```

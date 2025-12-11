@@ -1,8 +1,11 @@
 """Advent of Code 2025 - Day 9"""
-from aoc.base_solution import BaseSolution
+
 from itertools import combinations
-from collections import defaultdict
+
 from shapely import Polygon
+
+from aoc.base_solution import BaseSolution
+
 
 class Day09(BaseSolution):
     def __init__(self):
@@ -10,7 +13,6 @@ class Day09(BaseSolution):
 
     def parse_input(self, raw_input: str):
         return [tuple(map(int, line.split(","))) for line in raw_input.splitlines()]
-    
 
     @staticmethod
     def _get_area(start_point, end_point) -> int:
@@ -27,7 +29,7 @@ class Day09(BaseSolution):
                     max_area = area
 
         return max_area
-    
+
     def part2(self, input_data, **kwargs) -> int:
         boundary_polygon = Polygon(input_data)
 
@@ -50,6 +52,7 @@ class Day09(BaseSolution):
             if is_valid:
                 max_area = area
         return max_area
+
 
 if __name__ == "__main__":
     solution = Day09()

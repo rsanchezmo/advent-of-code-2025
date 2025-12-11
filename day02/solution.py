@@ -1,7 +1,8 @@
 """Advent of Code 2025 - Day 2"""
-from aoc.base_solution import BaseSolution
 
 import re
+
+from aoc.base_solution import BaseSolution
 
 
 class Day02(BaseSolution):
@@ -10,7 +11,6 @@ class Day02(BaseSolution):
 
     def parse_input(self, raw_input: str):
         return [(int(line.split("-")[0]), int(line.split("-")[1])) for line in raw_input.strip().split(",")]
-
 
     def part1(self, input_data, **kwargs) -> int:
         total_sum = 0
@@ -26,15 +26,15 @@ class Day02(BaseSolution):
         return total_sum
 
     def part2(self, input_data, **kwargs) -> int:
-        pattern = re.compile(r'(.+?)\1{1,}')
+        pattern = re.compile(r"(.+?)\1{1,}")
         total_sum = 0
-        
+
         for start, end in input_data:
             for n in range(start, end + 1):
-                s = str(n) 
+                s = str(n)
                 if pattern.fullmatch(s):
                     total_sum += n
-        
+
         return total_sum
 
 

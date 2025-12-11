@@ -1,7 +1,7 @@
+import time
 from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Any
-import time
 
 
 class BaseSolution(ABC):
@@ -31,7 +31,7 @@ class BaseSolution(ABC):
         Parse the raw input string into a usable format.
         Override this method to customize parsing for each day.
         Default implementation returns lines as a list of strings.
-        
+
         This is used when both parts share the same parsing logic.
         If parts need different parsing, override parse_input_part1/part2 instead.
         """
@@ -55,12 +55,15 @@ class BaseSolution(ABC):
         """Solve part 2 of the puzzle."""
         pass
 
-    def solve(self, show_time: bool = True, 
-              part1_kwargs: dict | None = None,
-              part2_kwargs: dict | None = None) -> tuple[Any, Any]:
+    def solve(
+        self,
+        show_time: bool = True,
+        part1_kwargs: dict | None = None,
+        part2_kwargs: dict | None = None,
+    ) -> tuple[Any, Any]:
         """
         Run both parts of the solution.
-        
+
         Args:
             show_time: Whether to display timing information
             part1_kwargs: Additional keyword arguments to pass to part1
@@ -68,7 +71,7 @@ class BaseSolution(ABC):
         """
         part1_kwargs = part1_kwargs or {}
         part2_kwargs = part2_kwargs or {}
-        
+
         print(f"🎄 Advent of Code {self.year} - Day {self.day}")
         print("=" * 40)
 
@@ -79,7 +82,7 @@ class BaseSolution(ABC):
         time1 = time.perf_counter() - start
         print(f"Part 1: {result1}")
         if show_time:
-            print(f"  Time: {time1*1000:.2f}ms")
+            print(f"  Time: {time1 * 1000:.2f}ms")
 
         # Part 2
         input_data2 = self.parse_input_part2(self.raw_input)
@@ -88,21 +91,26 @@ class BaseSolution(ABC):
         time2 = time.perf_counter() - start
         print(f"Part 2: {result2}")
         if show_time:
-            print(f"  Time: {time2*1000:.2f}ms")
+            print(f"  Time: {time2 * 1000:.2f}ms")
 
         print("=" * 40)
         if show_time:
-            print(f"Total time: {(time1+time2)*1000:.2f}ms")
+            print(f"Total time: {(time1 + time2) * 1000:.2f}ms")
 
         return result1, result2
 
-    def test(self, test_input: str, expected1: Any = None, expected2: Any = None, 
-             test_input_part2: str | None = None,
-             part1_kwargs: dict | None = None,
-             part2_kwargs: dict | None = None) -> bool:
+    def test(
+        self,
+        test_input: str,
+        expected1: Any = None,
+        expected2: Any = None,
+        test_input_part2: str | None = None,
+        part1_kwargs: dict | None = None,
+        part2_kwargs: dict | None = None,
+    ) -> bool:
         """
         Test the solution with sample input.
-        
+
         Args:
             test_input: Sample input for testing (used for both parts by default)
             expected1: Expected result for part 1
@@ -113,7 +121,7 @@ class BaseSolution(ABC):
         """
         part1_kwargs = part1_kwargs or {}
         part2_kwargs = part2_kwargs or {}
-        
+
         print(f"🧪 Testing Day {self.day}")
         print("-" * 40)
 

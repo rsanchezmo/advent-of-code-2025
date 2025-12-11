@@ -1,4 +1,5 @@
 """Advent of Code 2025 - Day 5"""
+
 from aoc.base_solution import BaseSolution
 
 
@@ -20,7 +21,7 @@ class Day05(BaseSolution):
         ranges, numbers = input_data
         merged_ranges = Day05.merge_ranges(ranges)
         fresh_numbers = 0
-        
+
         for number in numbers:
             for start, end in merged_ranges:
                 if start <= number <= end:

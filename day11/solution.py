@@ -1,6 +1,8 @@
 """Advent of Code 2025 - Day 11"""
-from aoc.base_solution import BaseSolution
+
 from functools import cache
+
+from aoc.base_solution import BaseSolution
 
 
 class Day11(BaseSolution):
@@ -28,11 +30,11 @@ class Day11(BaseSolution):
             total_paths = 0
             for neighbor in graph.get(node, []):
                 total_paths += solve_with_requirements(neighbor)
-            
+
             return total_paths
 
         return solve_with_requirements(start_node)
-    
+
     def part2(self, input_data, **kwargs) -> int:
         graph = input_data
         start_node = "svr"
@@ -43,7 +45,7 @@ class Day11(BaseSolution):
         def solve_with_requirements(node, required):
             if node in required:
                 required = required - {node}
-            
+
             if node == target_node:
                 # Only count path if all required nodes have been visited
                 return 1 if not required else 0
@@ -51,7 +53,7 @@ class Day11(BaseSolution):
             total_paths = 0
             for neighbor in graph.get(node, []):
                 total_paths += solve_with_requirements(neighbor, required)
-            
+
             return total_paths
 
         return solve_with_requirements(start_node, initial_required)
