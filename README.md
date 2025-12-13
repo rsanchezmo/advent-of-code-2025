@@ -2,6 +2,8 @@
 
 This repository contains my solutions for [Advent of Code 2025](https://adventofcode.com/2025) in Python.
 
+![Finish](finish.png)
+
 ## Project Structure
 
 Each day's solution is structured in its own directory (e.g., `day01`, `day02`, etc.) containing:
@@ -117,7 +119,7 @@ Total time: 221.42ms
 - [x] Day 9
 - [x] Day 10
 - [x] Day 11
-- [ ] Day 12
+- [x] Day 12
 
 ## Formatting
 
